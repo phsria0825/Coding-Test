@@ -13,11 +13,11 @@ int main() {
     double third_avg = 0; double third_sum = 0; int cnt = 0;
 
     for(int i=0; i<arr.size(); i++){
-        if(arr[i]%2 == 0){
+        if((i+1)%2 == 0){
             enven_sum+= arr[i];
         }
 
-        if(arr[i] % 3 == 0){
+        if((i+1) % 3 == 0){
             third_sum += arr[i];
             cnt++;
         }
