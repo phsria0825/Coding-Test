@@ -15,21 +15,26 @@ int main() {
         cin>>arr2[i];
     }
 
-
     int flag = 0;
-    int start_idx = find(arr1.begin(), arr1.end(), arr2[0]) - arr1.begin();
-    for(int i=0; i<arr2.size(); i++){
-        if(arr1[i+start_idx] != arr2[i]){
+    for(int i=0; i<=n1 - n2; i++){
+        int match = 1;
+        for(int k=0; k<n2; k++){
+            if(arr1[i+k] != arr2[k]){
+                match = 0;
+                break;
+            }
+        }
+
+        if(match){
             flag = 1;
-            break;
         }
     }
 
     if(flag){
-        cout<<"No"<<endl;
+        cout<<"Yes"<<endl;
     }
     else{
-        cout<<"Yes"<<endl;
+        cout<<"No"<<endl;
     }
 
     return 0;
