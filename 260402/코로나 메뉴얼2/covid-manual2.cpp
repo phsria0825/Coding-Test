@@ -35,7 +35,7 @@ int main() {
     int em = false;
     for(int i=0; i<4; i++){
         cout<<umap[i]<<" ";
-        if(umap[i]>=2){
+        if(umap[0]>=2){
             em = true;
         }
     }
