@@ -7,9 +7,9 @@ int main() {
     cin >> a>> b;
 
     unordered_map<int, int> umap;
-    while(a>=1){
-        a = a/b;
+    while(a>1){
         umap[a%b]++;
+        a = a/b;
     }
 
     int total = 0;
