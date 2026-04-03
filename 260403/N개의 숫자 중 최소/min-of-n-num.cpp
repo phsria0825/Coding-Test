@@ -12,11 +12,13 @@ int main() {
     }
 
     int val = arr[0];
-    int cnt = 1;
+    int cnt = 0;
     for(auto &num : arr){
-        if(val>num){
+        val = min(val, num);
+    }
+    for(auto &num : arr){
+        if(num == val){
             cnt++;
-            val = num;
         }
     }
     cout<<val<<" "<< cnt <<endl;
