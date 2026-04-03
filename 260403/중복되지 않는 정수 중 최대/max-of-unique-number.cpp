@@ -17,13 +17,19 @@ int main() {
     }
 
     int none_flag = 1;
+    int maxkey = 0;
     for(auto [key, val] : umap){
         if(val<=1){
             none_flag = 0;
-            cout<<key<<endl;
+            maxkey = max(maxkey, key);
         }
     }
-    if(none_flag) cout<<-1<<endl;
+    if(none_flag){
+        cout<<-1<<endl;
+    }
+    else{
+        cout<<maxkey<<endl;
+    }
     // Please write your code here.
 
 
