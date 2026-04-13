@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/**
 int main() {
     int N;
     cin>>N;
@@ -31,5 +32,49 @@ int main() {
         }
     }
     cout<< cnt<<" ";
+    return 0;
+}
+**/
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int grid[205][205]; 
+
+int main() {
+    int N;
+    cin >> N;
+
+    int offset = 100;
+
+    for(int n = 0; n < N; n++) {
+        int x1, y1, x2, y2;
+        cin >> x1 >> y1 >> x2 >> y2;
+
+
+        x1 += offset; y1 += offset;
+        x2 += offset; y2 += offset;
+
+
+        for(int i = x1; i < x2; i++) {
+            for(int j = y1; j < y2; j++) {
+                grid[i][j] = 1;
+            }
+        }
+    }
+
+    int total_area = 0;
+    for(int i = 0; i < 205; i++) {
+        for(int j = 0; j < 205; j++) {
+            if(grid[i][j] == 1) {
+                total_area++;
+            }
+        }
+    }
+
+    cout << total_area << endl;
+
     return 0;
 }
