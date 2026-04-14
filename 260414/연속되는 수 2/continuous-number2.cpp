@@ -11,14 +11,18 @@ int main() {
     }
 
     // Please write your code here.
-    int max_cnt = INT_MIN;
-    int cnt = 1;
-    for(int i=1; i<N; i++){
-        if(arr[i] == arr[i-1]){
-            cnt++;
+    int max_cnt = 0, cur_cnt = 0;
+    for(int i = 0; i < N; i++) {
+
+        if(i == 0 || arr[i] == arr[i-1]){
+            cur_cnt++;
         }
-        max_cnt = max(max_cnt, cnt);
+        else{ 
+            cur_cnt = 1;
+        }
+
+        max_cnt = max(max_cnt, cur_cnt);
     }
-    cout<<max_cnt<<endl;
+    cout << max_cnt << endl;
     return 0;
 }
