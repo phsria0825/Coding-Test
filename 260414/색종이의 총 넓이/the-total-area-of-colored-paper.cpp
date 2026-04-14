@@ -14,12 +14,17 @@ int main() {
     }
 
     // Please write your code here.
-    int offset = 8;
+    int offset = 100;
+    int length = 8;
     for(int n=0; n<N; n++){
-        int xEnd = x[n]+offset, yEnd = y[n]+offset;
+        int xStart = x[n]+offset;
+        int yStart = y[n]+offset;
+
+        int xEnd = xStart + length;
+        int yEnd = yStart + length;
         
-        for(int i=x[n]; i<xEnd; i++){
-            for(int j=y[n]; j<yEnd; j++){
+        for(int i=xStart; i<xEnd; i++){
+            for(int j=yStart; j<yEnd; j++){
                 if(grid[i][j] > 2) continue;
                 grid[i][j]++;
             }
