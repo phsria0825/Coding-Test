@@ -52,11 +52,14 @@ int main() {
         }
     }
 
+    int ans = -1;
     for(int i=0; i<pos_A.size(); i++){
         if(pos_A[i] == pos_B[i]){
-            cout<<i+1<<endl;
+            ans = i+1;
             break;
         }
     }
+
+    cout<<ans<<endl;
     return 0;
 }
