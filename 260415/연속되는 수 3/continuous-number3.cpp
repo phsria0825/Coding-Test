@@ -17,6 +17,9 @@ int main() {
         if(arr[i] < 0 && arr[i-1] < 0){
             cur_cnt++;
         }
+        else if(arr[i] > 0 && arr[i-1] > 0){
+            cur_cnt++;
+        }
         else{
             cur_cnt = 1;
         }
