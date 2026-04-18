@@ -12,7 +12,7 @@ int main() {
 
     // Please write your code here.
 
-    vector<int> cnt(N);
+    vector<int> cnt(N+1);
     int ans = -1;
     for(auto &m : arr){
         cnt[m]++;
