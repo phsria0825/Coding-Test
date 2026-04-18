@@ -1,73 +1,62 @@
-#include <iostream>
-
-#define MAX_T 1000000
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int n, m;
-int pos_a[MAX_T  + 1], pos_b[MAX_T + 1];
-
 int main() {
-    // 입력
-    cin >> n >> m;
-    
-    // A가 매 초마다 서있는 위치를 기록
-    int time_a = 1;
-    for(int i = 0; i < n; i++) {
-        char d; int t;
-        cin >> t >> d;
-        
-        while(t--) {
-            if(d == 'R')
-                pos_a[time_a] = pos_a[time_a - 1] + 1;
-            else
-                pos_a[time_a] = pos_a[time_a - 1] - 1;
-            
-            time_a++;
+    int N,M;
+    cin>>N>>M;
+
+    vector<tuple<int, string>> robotA(N);
+    for(int i=0; i<N; i++){
+        int m; string d;
+        cin>>m>>d;
+        robotA[i] = {m, d};
+    }
+
+    vector<tuple<int, string>> robotB(M);
+    for(int i=0; i<M; i++){
+        int m; string d;
+        cin>>m>>d;
+        robotB[i] = {m, d};
+    }
+
+    // Please write your code here.
+    vector<int> arrA;
+    int a = 0;
+    for(auto [move, dir] : robotA){
+        while(move--){
+            if(dir=="R"){
+                a++;
+            }
+            else{
+                a--;
+            }
+            arrA.push_back(a);
         }
     }
-    
-    // B가 매 초마다 서있는 위치를 기록
-    int time_b = 1;
-    for(int i = 0; i < m; i++) {
-        int t; char d;
-        cin >> t >> d;
-        
-        while(t--) {
-            if(d == 'R')
-                pos_b[time_b] = pos_b[time_b - 1] + 1;
-            else
-                pos_b[time_b] = pos_b[time_b - 1] - 1;
-            
-            time_b++;
+
+    vector<int> arrB;
+    int b = 0;
+    for(auto [move, dir] : robotB){
+        while(move--){
+            if(dir=="R"){
+                b++;
+            }
+            else{
+                b--;
+            }
+            arrB.push_back(b);
         }
     }
-	
-	
-	if(time_a < time_b) {
-		for(int i = time_a; i < time_b; i++) {
-			pos_a[i] = pos_a[i - 1];
-		}
-	}
-	else if(time_a > time_b) {
-		for(int i = time_b; i < time_a; i++) {
-			pos_b[i] = pos_b[i - 1];
-		}
-	}
-    
-    // 새롭게 만나는 횟수를 구합니다.
-    int cnt = 0;
-	int time_max = 0;
-	if(time_a < time_b)
-		time_max = time_b;
-	else
-		time_max = time_a;
-	
-    for(int i = 1; i < time_max; i++) {
-        if(pos_a[i] == pos_b[i] && pos_a[i - 1] != pos_b[i - 1])
+    int max_t = max(arrA.size(), arrB.size());
+    if(!arrA.empty()) arrA.resize(max_t, arrA.back());
+    if(!arrB.empty()) arrB.resize(max_t, arrB.back());
+
+    int cnt = 0; // 0으로 시작해야 맞습니다.
+    for(int i=1; i < max_t; i++){ // max_t까지만 돌리면 됨
+        if(arrA[i] == arrB[i] && arrA[i-1] != arrB[i-1]){
             cnt++;
+        }
     }
-    
-    cout << cnt;
+    cout<<cnt<<endl;
     return 0;
 }
