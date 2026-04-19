@@ -7,13 +7,12 @@ void conta(tuple<int,int,int> &info, vector<int> &cnt, vector<int> &developer){
     auto [time, start, end] = info;
 
     if(developer[start-1] == 1 && cnt[start-1] < K){
-        cnt[start-1]++;
         developer[end-1] = 1;
-
+        cnt[start-1]++;
     }
-    else if(developer[end-1] == 1 && cnt[end-1] < K){
-        cnt[end-1]++;
+    if(developer[end-1] == 1 && cnt[end-1] < K){
         developer[start-1] = 1;
+        cnt[end-1]++;
     }
 }
 
