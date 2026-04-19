@@ -6,11 +6,20 @@ int N, K, P, T;  // (개발자수, 전염수, 초기값, 악수 배열)
 void conta(tuple<int,int,int> &info, vector<int> &cnt, vector<int> &developer){
     auto [time, start, end] = info;
 
-    if(developer[start-1] == 1 && cnt[start-1] < K){
+    if(developer[start-1] == 1 && developer[end-1] == 1){
+        if(cnt[start-1] < K){
+        cnt[start-1]++;
+        }
+        
+        if(cnt[end-1] < K){
+            cnt[end-1]++;
+        }
+    }
+    else if(developer[start-1] == 1 && cnt[start-1] < K){
         developer[end-1] = 1;
         cnt[start-1]++;
     }
-    if(developer[end-1] == 1 && cnt[end-1] < K){
+    else if(developer[end-1] == 1 && cnt[end-1] < K){
         developer[start-1] = 1;
         cnt[end-1]++;
     }
