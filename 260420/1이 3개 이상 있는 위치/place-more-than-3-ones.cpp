@@ -26,14 +26,13 @@ int main() {
                 int nr = i + dr[k];
                 int nc = j + dc[k];
 
-                if(nr<0 || nr>=N || nc<0 || nc>=N) break;
+                if(nr<0 || nr>=N || nc<0 || nc>=N) continue;
                 if(grid[nr][nc] == 1){
                     cnt++;
                 }
-
-                if(cnt>=3){
-                    total_cnt++;
-                }
+            }
+            if(cnt>=3){
+                total_cnt++;
             }
         }
     }
